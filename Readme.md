@@ -1,5 +1,29 @@
-# Introduction
+# A USB AVR programmer based on the vusbtiny project
 
+Looking again for a USB avr programmer you can build. Following the chain:
+* http://www.instructables.com/id/DIY-5-USBTinyISP/
+* https://aylo6061.com/2011/09/26/attiny45-based-usbtinyisp-programmer/
+* http://www.simpleavr.com/avr/vusbtiny
+
+# BOM
+
+At first I had thought I would make a small circuit board to implement this circit. Which is just an attiny, some resistors, and some zener diodes. And as I was doing this it occurred to me, this schematic looks very familiar.
+
+I had a bunch of these "Digispark" devices. The schematic from their site: https://s3.amazonaws.com/digispark/DigisparkSchematicFinal.pdf
+
+The only difference seems to be the pin 2, 3 to the attiny are switched.  That is a little annoying. But easy to fix. in the usbconfig.h, the pin definitions are defines.
+
+Really I spent an unusual amount of time troubleshooting a bad USB cable that was only had the 2 wires because it was some kind of battery charging only cable or some nonsense. Seriously. Never trust a USB cable unless you test it first.
+
+But the digispark hardware has all that USB interface stuff and convenient solder pads for headers or wires to connect to the device to be progrmammed.
+
+
+We can conveniently use an Arduino as ISP to program the USBtiny firmware.  This solves a decade old problem of mine where I need a programmer to build a programmer.
+
+And then I found this other github project page where there was already a PCB design to go with software that was already fixed to compile with modern avr-gcc: https://github.com/goncalor/vusbtiny
+
+
+# Other Introduction
 VUSBtiny is a small in-system programmer (ISP) for Atmel AVR microcontrollers. It allows you to program microcontrollers on the go, without carrying a big programmer with you.
 
 VUSBtiny is based on the [USBtinyISP](https://learn.adafruit.com/usbtinyisp). It uses an Atmel AVR microcontroller running [V-USB](https://www.obdev.at/products/vusb/index.html), which allows it to communicate with your computer via a USB port.
@@ -82,12 +106,12 @@ You may have to run with `sudo`, or set correct options in your system.
 2. When programming with VUSBtiny `avrdude` throws `Operation not permitted` error
 
 		avrdude -c usbtiny -p t85 -U flash:w:blinkC.hex
-	
+
 		avrdude: error: usbtiny_transmit: error sending control message: Operation not permitted
 		avrdude: initialization failed, rc=-1
 		         Double check connections and try again, or use -F to override
 		         this check.
-	
+
 		avrdude: error: usbtiny_transmit: error sending control message: Operation not permitted
 		avrdude done.  Thank you.
 
@@ -99,7 +123,7 @@ You may have to run with `sudo`, or set correct options in your system.
 
 3. When programming with VUSBtiny `avrdude` throws `initialization failed, rc=-1` error
 
-		avrdude -c usbtiny -p t85 -U flash:w:blinkC.hex 
+		avrdude -c usbtiny -p t85 -U flash:w:blinkC.hex
 
 		avrdude: initialization failed, rc=-1
 			 Double check connections and try again, or use -F to override
