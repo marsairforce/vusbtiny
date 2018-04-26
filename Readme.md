@@ -56,9 +56,6 @@ That is easy to fix in the `usbconfig.h` by editing the pin definitions:
 Where these are the IO port B bit numbers, that correspond to pins 2 and 3 respectively.
 
 ## A Discrete ATtiny build
-
-![vusbtiny_schematic](doc/vusbtiny_schematic.png)
-
 To assemble your own VUSBtiny you will need the following components:
 
 - an Atmel AVR microcontroller [compatible with V-USB](https://www.obdev.at/products/vusb/index.html). I suggest ATtiny45 or ATtiny85
@@ -68,6 +65,10 @@ To assemble your own VUSBtiny you will need the following components:
 - two 3.6 V Zener diodes
 - a 10 μF capacitor (optional but recommended)
 - a breadboard, perfboard or PCB to assemble the circuit.
+
+![vusbtiny_schematic](doc/vusbtiny_schematic.png)
+This is the same schematic from the original vusbtiny. I just redrew it in Kicad. The project is in the pcb/kicad folder.
+
 
 # How to flash the AVR
 
