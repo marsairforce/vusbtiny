@@ -120,7 +120,7 @@ AVRDUDE_PROGRAMMERID=avrisp
 # port--serial or parallel port to which your
 # hardware programmer is attached
 #
-AVRDUDE_PORT=/dev/tty.usbmodem1411
+AVRDUDE_PORT=/dev/tty.usbmodem1421
 
 # the baud rate the programmer is using
 BAUD=19200

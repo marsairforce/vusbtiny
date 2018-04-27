@@ -55,6 +55,9 @@ That is easy to fix in the `usbconfig.h` by editing the pin definitions:
 ```
 Where these are the IO port B bit numbers, that correspond to pins 2 and 3 respectively.
 
+Really then just solder the 6 pin ICSP connector onto the digispark.
+![digispark_usbtinyisp](doc/digispark_usbtinyisp.JPG)
+
 ## A Discrete ATtiny build
 To assemble your own VUSBtiny you will need the following components:
 
@@ -94,6 +97,10 @@ The following instructions teach you how you can flash the Atmel AVR you chose t
 
 
 # How to use your new programmer
+
+The device should show up as a usb device with the name "USBtinyISP"
+* on Linux, `lsusb`
+* on Macos, `system_profiler SPUSBDataType`
 
 Your newly made programmer will be seen as a USBtinyISP programmer. That means the options you give to `avrdude` will be the same as if you had a true USBtinyISP connected. Example (flashing a simple blink code):
 
